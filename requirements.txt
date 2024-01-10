@@ -1,0 +1,7 @@
+openai
+numpy
+pandas
+azure-identity
+azure-search-documents==11.4.0b10
+python-dotenv
+pillow

@@ -3,6 +3,7 @@ line-length = 120
 target-version = "py311"
 select = ["E", "F", "I", "UP"]
 ignore = ["D203"]
+extend-include = ["*.ipynb"]
 
 [tool.black]
 line-length = 120

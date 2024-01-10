@@ -11,11 +11,8 @@
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
                 "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.testing.pytestEnabled": true,
-                "python.testing.unittestEnabled": false,
                 "files.exclude": {
                     ".coverage": true,
-                    ".pytest_cache": true,
                     "__pycache__": true
                 }
 			},
@@ -33,7 +30,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r requirements-dev.txt && pre-commit install",
+	"postCreateCommand": "pip3 install --user -r requirements-dev.txt",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
