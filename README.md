@@ -1,76 +1,21 @@
-# Python project template
+# Vector Search Demos
 
-This is a template repository for any Python project that comes with the following dev tools:
+## Steps for getting it running
 
-* `ruff`: identifies many errors and style issues (`flake8`, `isort`, `pyupgrade`)
-* `black`: auto-formats code
+1. Run `azd up` on [azure-search-openai-demo](https://github.com/Azure-Samples/azure-search-openai-demo/) with GPT-4-vision enabled. This will create the necessary resources for the Azure OpenAI, Azure AI Search services, and the Computer Vision service.
 
-Those checks are run as pre-commit hooks using the `pre-commit` library.
+2. Create a .env with these variables, and the values taken from `.azure/ENV-NAME/.env`
 
-It includes `pytest` for testing plus the `pytest-cov` plugin to measure coverage.
-
-The checks and tests are all run using Github actions on every pull request and merge to main.
-
-This repository is setup for Python 3.11. To customize that, change the `VARIANT` argument in `.devcontainer/devcontainer.json`, change the config options in `.precommit-config.yaml` and change the version number in `.github/workflows/python.yaml`.
-
-## Development instructions
-
-## With devcontainer
-
-This repository comes with a devcontainer (a Dockerized Python environment). If you open it in Codespaces, it should automatically initialize the devcontainer.
-
-Locally, you can open it in VS Code with the Dev Containers extension installed.
-
-## Without devcontainer
-
-If you can't or don't want to use the devcontainer, then you should first create a virtual environment:
-
-```
-python3 -m venv .venv
-source .venv/bin/activate
+```shell
+AZURE_OPENAI_SERVICE=YOUR-SERVICE-NAME
+AZURE_OPENAI_DEPLOYMENT_NAME=YOUR-OPENAI-DEPLOYMENT-NAME
+AZURE_OPENAI_ADA_DEPLOYMENT=YOUR-EMBED-DEPLOYMENT-NAME
+AZURE_SEARCH_SERVICE=YOUR-SEARCH-SERVICE-NAME
+AZURE_COMPUTERVISION_SERVICE=YOUR-COMPUTERVISION-SERVICE-NAME
 ```
 
-Then install the dev tools and pre-commit hooks:
+3. Login to the Azure Developer CLI:
 
+```shell
+azd auth login
 ```
-python3 -m pip install --user -r requirements-dev.txt
-pre-commit install
-```
-
-## Adding code and tests
-
-This repository starts with a very simple `main.py` and a test for it at `tests/main_test.py`.
-You'll want to replace that with your own code, and you'll probably want to add additional files
-as your code grows in complexity.
-
-When you're ready to run tests, run:
-
-```
-python3 -m pytest
-```
-
-# File breakdown
-
-Here's a short explanation of each file/folder in this template:
-
-* `.devcontainer`: Folder containing files used for setting up a devcontainer
-  * `devcontainer.json`: File configuring the devcontainer, includes VS Code settings
-  * `Dockerfile`: File with commands to build the devcontainer's Docker image
-* `.github`: Folder for Github-specific files and folders
-  * `workflows`: Folder containing Github actions config files
-    * `python.yaml`: File configuring Github action that runs tools and tests
-* `tests`: Folder containing Python tests
-  * `main_test.py`: File with pytest-style tests of main.py
-* `.gitignore`: File describing what file patterns Git should never track
-* `.pre-commit-config.yaml`: File listing all the pre-commit hooks and args
-* `main.py`: The main (and currently only) Python file for the program
-* `pyproject.toml`: File configuring most of the Python dev tools
-* `README.md`: You're reading it!
-* `requirements-dev.txt`: File listing all PyPi packages required for development
-* `requirements.txt`: File listing all PyPi packages required for production
-
-For a longer explanation, read [this blog post](http://blog.pamelafox.org/2022/09/how-i-setup-python-project.html).
-
-# 🔎 Found an issue or have an idea for improvement?
-
-Help me make this template repository better by letting us know and opening an issue!
